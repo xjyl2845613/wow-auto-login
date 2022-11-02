@@ -6,8 +6,8 @@ WOW_WINDOW_NAME = "魔兽世界"
 BATTLE_NET_WINDOW_NAME = "战网"
 
 # 图像识别图片源
-ENTER_GAME_IMAGE = "/resources/entergame.png"
-ONLINE_IMAGE = "/resources/online.png"
+ENTER_GAME_IMAGE = "resources/entergame.png"
+ONLINE_IMAGE = "resources/online.png"
 
 # 游戏内部按键
 SPACE_KEY = "space"
