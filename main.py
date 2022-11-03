@@ -23,17 +23,20 @@ def open_wow():
     try:
         battlenet_window = win32gui.FindWindow(None, BATTLE_NET_WINDOW_NAME)
         win32gui.SetForegroundWindow(battlenet_window)
+        print("战网正在运行...")
     except Exception as e:
-        print(e)
+        print("战网没有运行，即将运行战网...")
         subprocess.Popen(BATTLE_NET_EXE)
-        time.sleep(15)
+        time.sleep(20)
     finally:
         x, y = pyautogui.locateCenterOnScreen(ENTER_GAME_IMAGE)
         pyautogui.click(x, y)
-        time.sleep(18)
+        print("开始游戏...")
+        time.sleep(20)
         wow_window = win32gui.FindWindow(None, WOW_WINDOW_NAME)
         win32gui.SetForegroundWindow(wow_window)
         pyautogui.press(ENTER_KEY)
+        print("进入魔兽世界...")
         pyautogui.click(x, y)
         time.sleep(30)
 
@@ -54,8 +57,10 @@ while True:
         pyautogui.press(SPACE_KEY)
     position = pyautogui.locateCenterOnScreen(ONLINE_IMAGE)
     if position is None:
+        print("未找到角色在线标记...")
         retry_count = retry_count + 1
         if retry_count > RETRY_COUNT:
+            print("长时间未找到角色标记，即将重启游戏...")
             win32gui.PostMessage(window, win32con.WM_CLOSE, 0, 0)
             open_wow()
             retry_count = 0
