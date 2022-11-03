@@ -1,2 +1,11 @@
 /venv
 /.idea
+/dist
+/build
+/output
+
+/pyautogui
+/pyscreeze
+/PIL
+
+main.spec

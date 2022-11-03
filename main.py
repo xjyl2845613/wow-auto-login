@@ -1,19 +1,27 @@
-import pyautogui, time, random, win32gui, subprocess, win32con
+import pyautogui
+import random
+import subprocess
+import time
+import win32con
+import win32gui
+import configparser
 
+config = configparser.ConfigParser()
+config.read("config.ini", encoding="utf-8-sig")
 # 监控资源
-BATTLE_NET_EXE = r"C:\Program Files (x86)\Battle.net\Battle.net Launcher.exe"
-WOW_WINDOW_NAME = "魔兽世界"
-BATTLE_NET_WINDOW_NAME = "战网"
+BATTLE_NET_EXE = config['RESOURCES']['BATTLE_NET_EXE']
+WOW_WINDOW_NAME = config['RESOURCES']['WOW_WINDOW_NAME']
+BATTLE_NET_WINDOW_NAME = config['RESOURCES']['BATTLE_NET_WINDOW_NAME']
 
 # 图像识别图片源
-ENTER_GAME_IMAGE = "resources/entergame.png"
-ONLINE_IMAGE = "resources/online.png"
+ENTER_GAME_IMAGE = config['IMAGES']['ENTER_GAME_IMAGE']
+ONLINE_IMAGE = config['IMAGES']['ONLINE_IMAGE']
 
 # 游戏内部按键
-SPACE_KEY = "space"
-ENTER_KEY = "enter"
-FIRST_KEY = "g"
-SECOND_KEY = "v"
+SPACE_KEY = config['KEYS']['SPACE_KEY']
+ENTER_KEY = config['KEYS']['ENTER_KEY']
+FIRST_KEY = config['KEYS']['FIRST_KEY']
+SECOND_KEY = config['KEYS']['SECOND_KEY']
 
 # 未检测在游戏内的重试次数，一次最大60s，总体最好不要超过5min（0~5取值）
 RETRY_COUNT = 3
