@@ -1,10 +1,11 @@
-import pyautogui
+import configparser
 import random
 import subprocess
 import time
-import win32con
+
 import win32gui
-import configparser
+
+import pyautogui
 
 config = configparser.ConfigParser()
 config.read("config.ini", encoding="utf-8-sig")
@@ -66,12 +67,3 @@ while True:
     else:
         pyautogui.hotkey("c")
     pyautogui.hotkey(SECOND_KEY)
-    # position = pyautogui.locateCenterOnScreen(ONLINE_IMAGE)
-    # if position is None:
-    #     print("未找到角色在线标记...")
-    #     retry_count = retry_count + 1
-    #     if retry_count > RETRY_COUNT:
-    #         print("长时间未找到角色标记，即将重启游戏...")
-    #         win32gui.PostMessage(window, win32con.WM_CLOSE, 0, 0)
-    #         open_wow()
-    #         retry_count = 0
