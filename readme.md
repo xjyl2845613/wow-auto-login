@@ -32,8 +32,8 @@
 
 > 2.自动进场
 >
-> /run i=10 n=GetNumGroupMembers() if (n>i) then SendChatMessage("队伍人数大于"..i..",将开始移除后加入的玩家，请见谅","RAID_WARNING","Common") else print("--"..n) end
-> /click PVPReadyDialogEnterBattleButton
+> ```/run i=10 n=GetNumGroupMembers() if (n>i) then SendChatMessage("队伍人数大于"..i..",将开始移除后加入的玩家，请见谅","RAID_WARNING","Common") else print("--"..n) end```
+> ```/click PVPReadyDialogEnterBattleButton```
 > 
 > 说明：
 > 如果团队中人数超了，/rw 先喊话劝退，  然后再试着进入战场
@@ -43,7 +43,7 @@
 
 > 3.自动踢人
 > 
-> /run function e(o) for i=1,9 do local D= UnitDebuff(o,i); if D=='逃亡者' then return true end end end for i=1,40 do o="raid"..i  u=UnitLevel(o); if not UnitIsConnected(o) or e(o) or i>10 or u<70 or u>79 then print(o) UninviteUnit(o)  end end
+> ```/run function e(o) for i=1,9 do local D= UnitDebuff(o,i); if D=='逃亡者' then return true end end end for i=1,40 do o="raid"..i  u=UnitLevel(o); if not UnitIsConnected(o) or e(o) or i>10 or u<70 or u>79 then print(o) UninviteUnit(o)  end end```
 > 
 > 说明：
 > 检测团队中所有成员的状态，然后踢出团队，包括是否离线、是否有战场逃亡者DEBUFF，等级是否在某个区间内，是否满级。还会踢出自动组人组多的玩家
