@@ -55,20 +55,23 @@ retry_count = 0
 while True:
     window = win32gui.FindWindow(None, WOW_WINDOW_NAME)
     win32gui.SetForegroundWindow(window)
-    time.sleep(random.randint(30, 60))
+    time.sleep(random.randint(3, 10))
     val = random.randint(1, 10)
     if val > 6:
-        pyautogui.press(FIRST_KEY)
+        pyautogui.hotkey(FIRST_KEY)
     elif val > 3:
-        pyautogui.press(SECOND_KEY)
+        pyautogui.keyDown("w")
+        time.sleep(1)
+        pyautogui.keyUp("w")
     else:
-        pyautogui.press(SPACE_KEY)
-    position = pyautogui.locateCenterOnScreen(ONLINE_IMAGE)
-    if position is None:
-        print("未找到角色在线标记...")
-        retry_count = retry_count + 1
-        if retry_count > RETRY_COUNT:
-            print("长时间未找到角色标记，即将重启游戏...")
-            win32gui.PostMessage(window, win32con.WM_CLOSE, 0, 0)
-            open_wow()
-            retry_count = 0
+        pyautogui.hotkey("c")
+    pyautogui.hotkey(SECOND_KEY)
+    # position = pyautogui.locateCenterOnScreen(ONLINE_IMAGE)
+    # if position is None:
+    #     print("未找到角色在线标记...")
+    #     retry_count = retry_count + 1
+    #     if retry_count > RETRY_COUNT:
+    #         print("长时间未找到角色标记，即将重启游戏...")
+    #         win32gui.PostMessage(window, win32con.WM_CLOSE, 0, 0)
+    #         open_wow()
+    #         retry_count = 0
